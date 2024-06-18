@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <title>Leroy</title>
+  <style>
+    body, html{
+      height: 100%;
+      margin: 0;
+      font-family: "Times New Roman";
+    }
+
+    h2, p{
+      font-family: "Times New Roman";
+      /*font-size: 24px;*/
+      text-align: justify;
+    }
+
+    header{
+      background-color: #D4EB8E;
+    }
+
+    header img{
+      width: 100%;
+      height: auto;
+    }
+
+    h4{
+      font-family: "Times New Roman";
+      margin: 8px;
+    }
+
+    footer {
+      position: relative;
+      height: 150px; /* Ajusta la altura según sea necesario */
+      z-index: 1; /* Ajusta el índice z para que esté encima del pseudo-elemento */
+    }
+
+    .background-shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      background: #78BB20; /* Color de fondo principal */
+    }
+
+    .background-shapes::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%; /* Ajusta la altura según sea necesario */
+      background: #D4EB8E; /* Color del fondo secundario */
+      box-shadow: 10px 10px 10px #808080; /* Sombreado entre los tonos */
+      z-index: -1;
+    }
+
+    .footer-container {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .row-start {
+      display: flex;
+      justify-content: flex-start;
+      margin: 20px;
+    }
+
+    .row-end {
+      display: flex;
+      justify-content: flex-end;
+      margin: 10px;
+    }
+
+    .row-end img {
+      margin-left: 10px;
+    }
+
+    .botones{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      background-color: #78BB20; /* Verde Principal */
+      padding: 10px;
+      box-shadow: 8px 8px 8px 5px #808080;
+      flex-wrap: wrap;
+    }
+
+    .btn-sm {
+      background-color: #78BB20; /* Verde Principal */
+      border: 2px solid #78BB20; /* Borde Verde Principal */
+      color: black;
+      padding: 5px 5px;
+      text-align: center;
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold; /* Negrita */
+      margin: 5px;
+    }
+
+    .btn-sm:hover {
+      background-color: #97c93f; /* Cambio de color al pasar el cursor */
+      transform: scale(1.05); /* Pequeño aumento al pasar el cursor */
+    }
+
+    .clickTitle:hover{
+      /*background-color: #17202A; !* Cambio de color al pasar el cursor *!*/
+      transform: scale(1); /* Pequeño aumento al pasar el cursor */
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .container-body{
+      margin: 20px;
+      overflow: hidden;
+    }
+
+    .titulo{
+      background-color: #78BB20;
+      width: 33%;
+      padding: 0px 200px 0px 0px;
+      display: inline-block; /* Hace que el span se ajuste al contenido más el padding */
+    }
+
+    .container-column{
+      display: flex;
+      flex-direction: column;
+      margin: 10px;
+      height: 100%; /* Hace que las columnas ocupen todo el espacio vertical */
+      width: 100%;
+    }
+
+    .vertical-line {
+      background-color: #B8B4B3;
+      width: 2px; /* Ancho de la línea */
+      height: 100%;
+      margin: 10px;
+    }
+
+    .horizontal-line {
+      background-color: #B8B4B3;
+      width: 100% ; /* Ancho de la línea */
+      height: 2px; /* Alto de la línea */
+      margin-top: 20px;
+    }
+
+    .container-column img{
+      max-height: 400px;
+      width: auto;
+      display: block;
+      margin: auto;
+    }
+    .linea{
+      background-color: yellowgreen;
+      width: 33%;
+      height: 5px;
+      margin: 0; /* Asegura que no haya margen superior e inferior */
+    }
+
+    /* Clase para la sección de 3 columnas */
+    .container-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 2px 1fr 2px 1fr; /* 3 columnas para las líneas verticales */
+      gap: 10px;
+      align-items: start;
+      margin: 10px;
+    }
+
+    /* Clase para la sección de 2 columnas*/
+    .container-grid-2 {
+      display: grid;
+      grid-template-columns: 2fr 2px 1fr; /* 2 columnas para los contenidos, con líneas verticales entre ellas */
+      gap: 10px;
+      align-items: start;
+      margin: 10px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      /*height: 100%;*/
+      padding: 10px;
+      border: none;
+    }
+
+    .card img{
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      display: block;
+    }
+
+    .card-image{
+      display: block;
+      margin: 10px;
+    }
+
+
+    @media (max-width: 768px) {
+      .botones {
+        justify-content: center;
+      }
+
+      .btn-sm {
+        font-size: 12px;
+        padding: 5px 8px;
+      }
+
+      .container-grid-3, .container-grid-5, .container-grid-2, .container-grid-3-2, .container-grid-4 {
+        grid-template-columns: 1fr; /* Una columna para pantallas pequeñas */
+      }
+
+      .vertical-line {
+        display: none;
+      }
+
+      .card img, .container-column img {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn-sm {
+        font-size: 10px;
+        padding: 5px;
+      }
+
+      .titulo {
+        padding: 0px 10px;
+        font-size: medium;
+      }
+
+      .linea {
+        width: 100%;
+      }
+
+    }
+  </style>
+</head>
+<body>
+<!-- Definición de la plantilla de la tarjeta -->
+<template id="card-template">
+  <div class="card">
+    <img src="" alt="Image" class="card-image clickTitle">
+    <div class="card-content">
+      <h2 class="card-title clickTitle">Título</h2>
+      <p class="card-text">Contenido de la tarjeta.</p>
+    </div>
+  </div>
+</template>
+
+<header>
+  <img src="https://cdn.kalacibi.com/lm/Leroy-Newsletter-Preliminar-Julio-2024_01.png" alt="Newsletter">
+  <div class="botones">
+    <button class="btn-sm" onclick="window.location.href='https://www.enlace1.com'">INICIO</button>
+    <button class="btn-sm" onclick="window.location.href='https://www.enlace2.com'">INDICADORES</button>
+    <button class="btn-sm" onclick="window.location.href='https://www.enlace3.com'">RANKING BUS</button>
+    <button class="btn-sm" onclick="window.location.href='https://www.enlace4.com'">LOREM IPSUM</button>
+    <button class="btn-sm" onclick="window.location.href='https://www.enlace5.com'">CONTACTO</button>
+  </div>
+</header>
+<div class="container-body">
+  <div>
+    <h2><span class="titulo">EDITORIAL 2024</span></h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <div class="linea"></div>
+  </div>
+  <div class="horizontal-line"></div>
+  <div class="container-grid-2">
+    <div class="container-column">
+      <h2 class="clickTitle">Conseguimos certificarnos en la ISO 27001</h2>
+      <p>Por sexto año consecutivo os anunciamos que hemos obtenido la certificación en la Normativa Estándar ISO 27001 de Seguridad de la Información con 0 no conformidades.
+        Por ello, queremos dar las gracias a todas las personas que han participado en el proceso de la auditoría.</p>
+      <img src="https://cdn.kalacibi.com/lm/Imagen-Palmadas-ISO-01.png" alt="ISO" class="clickTitle">
+    </div>
+    <div class="vertical-line"></div>
+    <div class="container-column">
+      <iframe width="499" height="377" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSGXnd5BkSaNZKSvJtB2WPSxLb8jmaAhhBWHcRKhgnGrBfZEdUpiNDAU7zoHuhnwQ/pubchart?oid=1998810088&amp;format=interactive"></iframe>
+    </div>
+  </div>
+  <div class="horizontal-line"></div>
+  <div id="container-grid-3" class="container-grid-3">
+    <div class="container-column"></div>
+    <div class="vertical-line"></div>
+    <div class="container-column"></div>
+    <div class="vertical-line"></div>
+    <div class="container-column">
+      <h2 class="clickTitle">¿Quieres conocer las últimas noticias de concienciación que hemos publicado?</h2>
+      <img src="https://cdn.kalacibi.com/lm/Comunicado-2024-05-14-430p.png" alt="Comunicado" class="clickTitle">
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="background-shapes">
+    <div class="footer-container">
+      <div class="row-end">
+        <p>Contáctanos:</p>
+        <img src="logo1.png" alt="Logo 1" class="clickTitle">
+        <img src="logo2.png" alt="Logo 2" class="clickTitle">
+        <img src="logo3.png" alt="Logo 3" class="clickTitle">
+      </div>
+      <div class="row-start">
+        <p>Texto alineado a la izquierda</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!--<footer>-->
+<!--  <div class="container-column">-->
+<!--    <div class="row">-->
+<!--      <h4>Contáctanos:</h4>-->
+<!--      <img src="https://cdn.kalacibi.com/lm/Leroy-Newsletter-Prelimimar-Julio-&#45;&#45;Footer_03.png" alt="Sobre">-->
+<!--      <img src="https://cdn.kalacibi.com/lm/Leroy-Newsletter-Prelimimar-Julio-&#45;&#45;Footer_04.png" alt="ServiceNow">-->
+<!--      <img src="https://cdn.kalacibi.com/lm/Leroy-Newsletter-Prelimimar-Julio-&#45;&#45;Footer_05.png" alt="WorkPlace">-->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--      <h3>Este es otro texto</h3>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</footer>-->
+
+
+<script>
+  // Obtener la plantilla de la tarjeta
+  const cardTemplate = document.getElementById('card-template');
+
+  const cardsData = [
+    { imageSrc: 'https://cdn.kalacibi.com/lm/Ilustracion-Hombre-Montaña-430p.png', title: '¡Xxxx Xxxxxx España lidera el ranking de las BUs!', text: 'Xxxxx Xxxxxx España con una puntuación de 220 se sitúa en primera posición entre las 18 BUs que han presentado su Risk Mapping.' },
+    { imageSrc: 'https://cdn.kalacibi.com/lm/Netskope-Logo-430p.png', title: '¡Nuevo sistema de acceso remoto!', text: 'Este nuevo aplicativo ya ha sido instalado en todos los equipos pertenecientes a Xxxxx Xxxxxx España. Netskope es una solución moderna de acceso remoto seguro que reemplaza a las VPN tradicionales.' }
+  ];
+
+  // Función para crear y agregar una tarjeta al contenedor
+  function createCard(data, container) {
+    // Clonar la plantilla de la tarjeta
+    const cardClone = cardTemplate.content.cloneNode(true);
+
+    // Obtener elementos de la tarjeta clonada
+    const cardImage = cardClone.querySelector('.card-image');
+    const cardTitle = cardClone.querySelector('.card-title');
+    const cardText = cardClone.querySelector('.card-text');
+
+    // Asignar valores a los elementos de la tarjeta
+    cardImage.src = data.imageSrc;
+    cardTitle.textContent = data.title;
+    cardText.textContent = data.text;
+
+    // Agregar la tarjeta clonada al contenedor
+    container.appendChild(cardClone);
+  }
+
+  // Crear y agregar todas las tarjetas utilizando los datos
+  cardsData.forEach((data, index) => {
+    const container = document.getElementById('container-grid-3');
+    const containerColumn = container.getElementsByClassName('container-column')[index];
+    createCard(data, containerColumn);
+  });
+
+</script>
+
+</body>
+</html>
